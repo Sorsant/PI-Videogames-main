@@ -1,43 +1,62 @@
 const axios = require("axios");
 require("dotenv").config();
 const KEY = process.env.API_KEY;
-const { Videogame } = require("../db");
-
+const { Videogame,Genres } = require("../db");
+// 960528
 const getIdVideoGame = async (req, res) => {
-  try {
-    const { id } = req.params;
+    try {
+        const { id } = req.params;// me tira un numero 
+        
+        const videogame = await Videogame.findOne({
+            where: {
+                id,
+            },
+        });
+        if(!videogame){
 
-    if (!id) throw new Error(`ID: ${id} Error not found`);
+            const { data } = await axios( // traigo el game por el numero id de data
+            `https://api.rawg.io/api/games/${id}?key=${KEY}`
+            );
+            const cantidadDeGames= await Videogame.count();
+            let newId = cantidadDeGames +1;// me tira un num  de la db y le sumo 1 para alojar el nuevo id 
+            
+            const newVG = await Videogame.create({ // creo el game en la DB 
 
-    const { data } = await axios(
-      `https://api.rawg.io/api/games/${id}?key=${KEY}`
-    ); // consulto a la api la data id
+                
+            id: newId, //
+            name: data.name,
+            description: data.description_raw,
+            plataformas: data.platforms.map((plataform) => plataform.platform.name).join(', '),
+            fecha: data.released,
+            rating: data.rating,
+            image: data.background_image,
+            createInDb:true,
+          });
+          
+          
+          const genrNam = await Genres.findAll({
+            where: {
+              name: data.genres.map((genre) => genre.name),
+            },
+          });
+          await newVG.addGenres(genrNam);
+          const getNewVgID = await Videogame.findOne({
+            where: {
+                id:newId,
+            },
+        });
+        
+        if (!res.headersSent) {
+            return res.status(200).json(getNewVgID);;
+        }
+        
 
-    if (!data.id) {
-      // si no me da la data id recurro a buscar en la DB
-      const videogame = await Videogame.findOne({
-        where: {
-          id,
-        },
-      });
-      if (!videogame); // si no me la da en la db me tira error
-      return res.status(200).json(videogame); // si me la da retorno el obj
-    }
+        } 
+      
 
-    const videogame = {
-      id: data.id,
-      name: data.name,
-      description: data.description,
-      genres: data.genres.map((genre) => genre.name),
-      plataformas: data.platforms.map((plataform) => plataform.platform.name),
-      fecha: data.released,
-      rating: data.rating,
-      image: data.background_image,
-    };
-
-    res.status(200).json(videogame);
+        return res.status(200).json(videogame);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    returnres.status(500).json({ message: error.message });
   }
 };
 

@@ -5,7 +5,9 @@ const postVG = require("../../controllers/postvideogame");
 
 const router = express.Router();
 
-router.get("/:id", getIdVideoGame);
+router.get("/:id",async(req,res)=>{
+  await getIdVideoGame(req,res)
+} );
 
 router.get("/", async (req, res) => {
   const name = req.query.name;

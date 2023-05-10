@@ -1,6 +1,7 @@
 const { Videogame, Genres } = require("../db");
 
 const postVG = async (req, res) => {
+
   const {
     name,
     description,
@@ -11,8 +12,11 @@ const postVG = async (req, res) => {
     genres,
     createInDb,
   } = req.body;
+  const count = await Videogame.count();
+const nextId = count + 1;
   try {
     const newVG = await Videogame.create({
+      id: nextId,
       name,
       description,
       plataformas,
