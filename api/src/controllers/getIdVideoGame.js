@@ -3,6 +3,7 @@ require("dotenv").config();
 const KEY = process.env.API_KEY;
 const { Videogame,Genres } = require("../db");
 // 960528
+
 const getIdVideoGame = async (req, res) => {
     try {
         const { id } = req.params;// me tira un numero 
