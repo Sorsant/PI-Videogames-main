@@ -18,38 +18,21 @@ const getIdVideoGame = async (req, res) => {
             const { data } = await axios( // traigo el game por el numero id de data
             `https://api.rawg.io/api/games/${id}?key=${KEY}`
             );
-            const cantidadDeGames= await Videogame.count();
-            let newId = cantidadDeGames +1;// me tira un num  de la db y le sumo 1 para alojar el nuevo id 
             
-            const newVG = await Videogame.create({ // creo el game en la DB 
-
-                
-            id: newId, //
-            name: data.name,
-            description: data.description_raw,
-            plataformas: data.platforms.map((plataform) => plataform.platform.name).join(', '),
-            fecha: data.released,
-            rating: data.rating,
-            image: data.background_image,
-            createInDb:true,
-          });
-          
-          
-          const genrNam = await Genres.findAll({
-            where: {
-              name: data.genres.map((genre) => genre.name),
-            },
-          });
-          await newVG.addGenres(genrNam);
-          const getNewVgID = await Videogame.findOne({
-            where: {
-                id:newId,
-            },
-        });
+            const Vg= data
+            const idResults ={
+              name: Vg.name,
+              id: Vg.id,
+              description: Vg.description,
+              genres: Vg.genres.map((genre) => genre.name),
+              platforms: Vg.platforms.map((platform) => platform.platform.name),
+              fecha: Vg.released,
+              rating: Vg.rating,
+              image: Vg.background_image,
+            }
+                  
+            return res.status(200).json(idResults);;
         
-        if (!res.headersSent) {
-            return res.status(200).json(getNewVgID);;
-        }
         
 
         } 
@@ -57,7 +40,7 @@ const getIdVideoGame = async (req, res) => {
 
         return res.status(200).json(videogame);
   } catch (error) {
-    returnres.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };
 

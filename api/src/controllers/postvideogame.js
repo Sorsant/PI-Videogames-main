@@ -16,7 +16,7 @@ const postVG = async (req, res) => {
       res.status(400).send({ error: "Datos insuficientes" });
     }
   const count = await Videogame.count();
-const nextId = count + 1;
+const nextId = count + 960529;
   try {
     const newVG = await Videogame.create({
       id: nextId,
@@ -35,7 +35,7 @@ const nextId = count + 1;
     });
 
     await newVG.addGenres(genrNam);
-    res.status(201).json({ message: `Video game created successfully and the Id to edit or delete is ${nextId}`});
+    res.status(201).json({ message: `Video game created successfully an.d the Id to edit or delete is ${nextId}`});
   } catch (error) {
     res.status(404).send({ error: error.message });
   }

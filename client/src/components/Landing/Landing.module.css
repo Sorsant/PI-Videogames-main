@@ -1,0 +1,25 @@
+.fondo {
+    background-image: url(https://i.ibb.co/r4YGmfz/prototipo-de-landing.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    text-align: center;
+    background-attachment: fixed;
+    /* filter: saturate(150%); */
+    filter: contrast(120%);
+}
+
+.Box {
+    position: relative;
+    display: inline-block;
+    /* justify-content: center; */
+    top: 35rem;
+    width: 30rem;
+    height: 10rem;
+    background-color: rgba(112, 150, 156, 0.765);
+    padding-top: 1.6rem;
+    margin: auto;
+    box-shadow: 13px 13px 16px 9px #00000069;
+    border-radius: 3.6rem;
+}
