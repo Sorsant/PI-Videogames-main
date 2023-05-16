@@ -1,4 +1,15 @@
-import {GET_ALL_VIDEOGAMES,GET_VIDEOGAMES_DETAIL,ADD_VIDEOGAME,UPDATE_VIDEOGAME,DELETE_VIDEOGAME,FILTER_GENERS, ORDER_RAIINGS_AND_ALFABETICO ,GET_ALL_POSTS} from "./actions-types";
+import {GET_ALL_VIDEOGAMES,
+    FILTER
+    ,GET_NAME_VIDEOGAMES
+    ,GET_VIDEOGAMES_DETAIL
+    ,FILTER_GENERS_DB
+    ,ADD_VIDEOGAME,
+    UPDATE_VIDEOGAME,
+    DELETE_VIDEOGAME,
+    FILTER_GENERS,
+     ORDER_ALFABETICO,
+     ORDER_RATINGS,
+     GET_ALL_POSTS} from "./actions-types";
 import axios from "axios";
 
 
@@ -10,7 +21,7 @@ export const addVG = (videogame)=>{ // post
         try {
             const {data} = await axios.post(endpoint,videogame);
 
-        if(!data.length) throw new Error ("No se pudo crear el videogames")
+        
         return dispatch ({
             type:ADD_VIDEOGAME,
             payload:data
@@ -26,8 +37,6 @@ export const putVG = (videogame)=>{ // put
     return async (dispatch)=>{
         try {
             const {data} = await axios.put(endpoint,videogame);
-
-        if(!data.length) throw new Error ("No se pudo modificar el videogames")
         return dispatch ({
             type:UPDATE_VIDEOGAME,
             payload:data
@@ -44,7 +53,7 @@ export const removeVG = (id) => {
         return async(dispatch)=>{    
            try {
             const {data} = await axios.delete(endpoint);
-            if(!data.length) throw new Error ('No se pudo borrar el videogames');
+            
             return dispatch ({
                 type:DELETE_VIDEOGAME,
                 payload:data
@@ -57,12 +66,12 @@ export const removeVG = (id) => {
    }
 
 
-export const getVGrDetail = (id) => { // detail
-    const endpoint= ` http://localhost:3001//videogames/${id}`
+export const getVGDetail = (id) => { // detail
+    const endpoint= `http://localhost:3001/videogames/${id}`
     return async(dispatch)=>{    
        try {
         const {data} = await axios.get(endpoint);
-        if(!data.length) throw new Error ('No se pudo traer con el id');
+        
         return dispatch ({
             type:GET_VIDEOGAMES_DETAIL,
             payload:data
@@ -73,30 +82,91 @@ export const getVGrDetail = (id) => { // detail
         
     }
 }
+export const getVGName = (name) => { // get name vg
+    const endpoint=`http://localhost:3001/videogames/?name=${name}`
+    return async(dispatch)=>{    
+       try {
+        const {data} = await axios.get(endpoint);
+            
+        return dispatch ({
+            type:GET_NAME_VIDEOGAMES,
+            payload:data
+        })
+       } catch (error) {
+        console.log(error)
+       }
+        
+    }
+}
+export function filterCards(genre) {
+    const endpoint='http://localhost:3001/videogames'
+    return async(dispatch)=>{    
+       try {
+        const {data} = await axios.get(endpoint);
+        if(genre ==="AllGeners"){
+            return dispatch ({
+                type: FILTER,
+                 payload: data})
+        }
+        const newFilter = data.filter((vg) =>vg.genres.includes(genre));
+          return dispatch ({
+            type: FILTER,
+             payload: newFilter
+        })
+       } catch (error) {
+        console.log(error)
+       }
+        
+    }
+}
+export function OrderCardsAz(order) {
+    const endpoint='http://localhost:3001/videogames'
+    return async(dispatch)=>{    
+       try {
+        const {data} = await axios.get(endpoint);
+        if(order ==="Default"){
+            return dispatch ({
+                type:  ORDER_ALFABETICO,
+                 payload: data})
+        }
+        else if (order === "A-Z"){
+            const acendente = data.sort((a,b)=>a.name.localeCompare(b.name));
+            return dispatch ({
+                type:  ORDER_ALFABETICO,
+                 payload: acendente})
+        }
+        else if( order === "Z-A"){
+            const decendente = data.sort((a,b)=>b.name.localeCompare(a.name));
+            
+              return dispatch ({
+                type:  ORDER_ALFABETICO,
+                 payload: decendente
+            })
+
+        }
+       } catch (error) {
+        console.log(error)
+       }
+        
+    }
+}
 export const getAllVG = () => { // get all vg
-    // const endpoint='http://localhost:3001/videogames'
-    // return async(dispatch)=>{    
-    //    try {
-    //     const {data} = await axios.get(endpoint);
+    const endpoint='http://localhost:3001/videogames'
+    return async(dispatch)=>{    
+       try {
+        const {data} = await axios.get(endpoint);
        
-    //     if(!data.length) throw new Error ('No se pudo traer los videogames');
         
-    //     return dispatch ({
-    //         type:GET_ALL_VIDEOGAMES,
-    //         payload:data
-    //     })
-    //    } catch (error) {
-    //     console.log(error)
-    //    }
         
-    // }
-   return async (dispatch) => {
-    const response = await axios("http://localhost:3001/videogames")
-    return dispatch ({
-        type:GET_ALL_VIDEOGAMES,
-        payload:response.data,
-    })
-   }
+        return dispatch ({
+            type:GET_ALL_VIDEOGAMES,
+            payload:data
+        })
+       } catch (error) {
+        console.log(error)
+       }
+        
+    }
 }
 
 export const getAllPosts= () => { // get all posts
@@ -104,7 +174,7 @@ const endpoint= 'http://localhost:3001/posteados'
 try {
     return async(dispatch)=>{
         const {data} = await axios.get(endpoint);
-        if(!data.length) throw new Error ('No se pudo traer los posts');
+        
         return dispatch ({
             type:GET_ALL_POSTS,
             payload:data
@@ -114,12 +184,14 @@ try {
     console.log(error)
 }
 }
+
+
 export const getGenres = () => { // get genres
 const endpoint= 'http://localhost:3001/genres'
 try {
     return async(dispatch)=>{
         const {data} = await axios.get(endpoint);
-        if(!data.length) throw new Error ('No se pudo traer los genres');
+       
         return dispatch ({
             type:FILTER_GENERS,
             payload:data
@@ -129,6 +201,52 @@ try {
     console.log(error)
 }
 }
-export const Order = (order) => { // get order
-return {type:ORDER_RAIINGS_AND_ALFABETICO,payload:order}
-}
+export const getGenresDB = () => { // get genres
+    const endpoint= 'http://localhost:3001/genres/db'
+    try {
+        return async(dispatch)=>{
+            const {data} = await axios.get(endpoint);
+           
+            return dispatch ({
+                type:FILTER_GENERS_DB,
+                payload:data
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+    }
+
+
+    export const OrderRating = (order) => { // obtener calificaciones de la orden
+        const endpoint = 'http://localhost:3001/videogames';
+        return async (dispatch) => {
+            try {
+                const { data } = await axios.get(endpoint);
+                const ratingsvalue = data;
+                if (order === "Default") {
+                    return dispatch({
+                        type: ORDER_RATINGS,
+                        payload: ratingsvalue
+                    });
+                }
+                if (order === "MinRating") {
+                    const acendente = ratingsvalue.sort((a, b) => a.rating - b.rating);
+                    return dispatch({
+                        type: ORDER_RATINGS,
+                        payload: acendente
+                    });
+                } else if (order === "MaxRating") {
+                    const decendente = ratingsvalue.sort((a, b) => b.rating - a.rating);
+                    return dispatch({
+                        type: ORDER_RATINGS,
+                        payload: decendente
+                    });
+                }
+            } catch (error) {
+                console.error('Error de red:', error.message);
+            }
+        }
+    } 
+    
+    

@@ -1,20 +1,19 @@
 import SearchBar from '../Searchbar/searchbar';
 import { NavLink, } from 'react-router-dom';
-
+import { useLocation } from 'react-router-dom';
 const Nav = () => {
-
+    const location = useLocation();
 
 
     return (
         <nav >
             <div >
+                <NavLink to="/HomePage"><button >Inicio</button></NavLink>
+                <NavLink to="/Mygames"> <button  >My Games</button></NavLink>
 
-                <NavLink to="/Home"><button >Inicio</button></NavLink>
-                <NavLink to="/FromPage"> <button  >Add to Game</button></NavLink>
-                <NavLink to="/PutPage"><button>Edit to Game</button></NavLink>
-                <NavLink to="/DeletPage"><button>Delete to Game</button></NavLink>
             </div>
-            <SearchBar />
+
+            {location.pathname !== "*" && location.pathname !== "/Mygames" ? <SearchBar /> : null}
             <NavLink to='/'><button >Log Out</button></NavLink>
 
         </nav>

@@ -24,18 +24,19 @@ const nextId = count + 960529;
       description,
       plataformas,
       fecha,
+      
       rating,
       image,
       createInDb,
     });
-    const genrNam = await Genres.findAll({
-      where: {
+    const genrNam = await Genres.create({
+    
         name: genres,
-      },
+      
     });
 
     await newVG.addGenres(genrNam);
-    res.status(201).json({ message: `Video game created successfully an.d the Id to edit or delete is ${nextId}`});
+    res.status(201).json({ message: `Video game created successfully and the Id to edit or delete is ${nextId}`});
   } catch (error) {
     res.status(404).send({ error: error.message });
   }

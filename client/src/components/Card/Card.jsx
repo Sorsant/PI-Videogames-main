@@ -4,9 +4,9 @@ function Card({ id, name, rating, genres, image }) {
 
 
     return (
-        <div className={style.cardcontainer}>
-            <Link to={`/Detail/${id}`}><h2>{name}</h2></Link>
-            <img src={image} alt={name} />
+        <div key={id} className={style.cardcontainer}>
+            <Link to={`/HomePage/${id}`}><h2>{name}</h2></Link>
+            <img src={image} alt="" />
             <h2>Genero:{genres}</h2>
             <h4>ID:{id}</h4>
             <h4>Rating:⭐{rating}</h4>

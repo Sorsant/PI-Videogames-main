@@ -12,18 +12,21 @@ router.get("/:id",async(req,res)=>{
 router.get("/", async (req, res) => {
   const name = req.query.name;
   const allVG = await getAllVG();
+  const uniqueSet = new Set(allVG);
+      const uniqueArray = Array.from(uniqueSet);
 
   if (name) {
-    const filterNameVG = allVG.filter((elm) =>
+    const filterNameVG = uniqueArray.filter((elm) =>
       elm.name.toLowerCase().includes(name.toLowerCase())
     );
     filterNameVG.length
       ? res.status(200).send(filterNameVG)
       : res.status(404).send("No esta el videogame");
   } else {
-    res.status(200).send(allVG);
+    res.status(200).send(uniqueArray);
   }
 });
+
 
 
 

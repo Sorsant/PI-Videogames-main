@@ -6,16 +6,20 @@ const { Genres } = require("../../db");
 router.get("/", async (req, res) => {
   try {
     const genresG = await getGenres();
-    genresG.forEach((elem) => {
-      Genres.findOrCreate({
-        where: { name: elem },
-      });
-    });
-    const allGenres = await Genres.findAll();
-    res.status(200).json(allGenres);
+   
+   
+    res.status(200).json(genresG);
   } catch (error) {
     res.status(404).send("not found");
   }
 });
+router.get('/db',async (req, res) => {
+  try {
+    const dbG = await Genres.findAll();
+    res.status(200).json(dbG);
+  } catch (error) {
+    res.status(404).send("not found");
+  }
+})
 
 module.exports = router;

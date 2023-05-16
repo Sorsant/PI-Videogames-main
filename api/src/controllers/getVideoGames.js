@@ -28,6 +28,7 @@ const getVideoGames = async () => {
         image: el.background_image,
       };
     });
+    
   return apiInfo;
 };
 
