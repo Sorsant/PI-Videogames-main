@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
   const allVG = await getAllVG();
   const uniqueSet = new Set(allVG);
       const uniqueArray = Array.from(uniqueSet);
-
+ 
   if (name) {
     const filterNameVG = uniqueArray.filter((elm) =>
       elm.name.toLowerCase().includes(name.toLowerCase())

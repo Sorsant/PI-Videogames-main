@@ -1,4 +1,4 @@
-require("dotenv").config();
+
 const { Videogame } = require("../db");
 
 const updateVg = async (modifc) => {

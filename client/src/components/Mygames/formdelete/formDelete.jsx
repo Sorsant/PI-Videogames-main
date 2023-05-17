@@ -1,0 +1,33 @@
+import React from 'react'
+import { useState } from 'react';
+import { useDispatch } from "react-redux"
+import { removeVG } from '../../../redux/actions';
+const FormDelete = () => {
+    const dispatch = useDispatch();
+    const [deleteid, setDeleteid] = useState({
+        id: ''
+    })
+    const HandleonChange = (event) => {
+        setDeleteid({
+            ...deleteid,
+            [event.target.name]: event.target.value
+        })
+    }
+
+
+    const handleOnSubmit = (event) => {
+        event.preventDefault()
+        dispatch(removeVG(deleteid));
+    }
+    return (
+        <div onSubmit={handleOnSubmit}>
+            <form action="">
+                <label htmlFor="">Id para eliminar el game</label><br />
+                <input type="number" name="id" placeholder='Id para Eliminar el game' onChange={HandleonChange} />
+                <button>enviar</button>
+            </form>
+        </div>
+    )
+}
+
+export default FormDelete

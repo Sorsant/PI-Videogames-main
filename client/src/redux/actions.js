@@ -33,10 +33,11 @@ export const addVG = (videogame)=>{ // post
     }
 }
 export const putVG = (videogame)=>{ // put
-    const endpoint =("http://localhost:3001/posteados")
+    const endpoint =("http://localhost:3001/posteados/")
     return async (dispatch)=>{
         try {
             const {data} = await axios.put(endpoint,videogame);
+            
         return dispatch ({
             type:UPDATE_VIDEOGAME,
             payload:data

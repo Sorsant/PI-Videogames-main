@@ -7,16 +7,13 @@ import Nav from '../Nav/Nav'
 const HomePage = () => {
     const dispatch = useDispatch();
     const allGenres = useSelector((state) => state.filterGenres)
-    const GenersDb = useSelector((state) => state.filterGenresdb)
+
 
     useEffect(() => {
         dispatch(getGenres())
 
     }, [dispatch])
-    useEffect(() => {
-        dispatch(getGenresDB())
 
-    }, [dispatch])
 
     const handleFilter = (event) => {
         event.preventDefault();
@@ -45,10 +42,6 @@ const HomePage = () => {
                     <option value="AllGeners">All Geners</option>
                     {allGenres?.map((genres) => {
                         return <option value={genres}>{genres}</option>
-                    })}
-                    <optgroup label="GenerosDB"></optgroup>
-                    {GenersDb?.map((genres) => {
-                        return <option key={genres.id} value={genres.name}>{genres.name}</option>
                     })}
                 </select>
             </div>

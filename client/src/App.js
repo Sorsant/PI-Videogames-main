@@ -5,7 +5,7 @@ import HomePage from './components/HomePage/HomePage.jsx';
 import Dealit from './components/Deatil/Deatil';
 import Nav from './components/Nav/Nav';
 import Error from './components/Error/Error';
-
+import Mygames from './components/Mygames/Mygames';
 
 function App() {
   const location = useLocation();
@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/HomePage" element={<HomePage/>}/>
         <Route path="/HomePage/:id" element={<Dealit/>} />
-        {/* <Route path="/Mygames" element={} /> */}
+        <Route path="/Mygames" element={<Mygames/>} />
         <Route path="*" element={<Error/>} />
       </Routes>
     </div>

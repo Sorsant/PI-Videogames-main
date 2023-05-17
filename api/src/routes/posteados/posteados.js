@@ -1,14 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
-const { Videogame } = require("../../db");
+const { Videogame ,Genres} = require("../../db");
 const postVG = require("../../controllers/postvideogame");
 const deleteVg = require("../../controllers/deleteVg");
 const putvg = require("../../controllers/putVg");
 
 router.get("/", async (req, res) => {
   try {
-   const cantidad=await Videogame.findAll()// traigo de la DB un array de todos los posteos
+    const cantidad = await Videogame.findAll({
+      include: [{ model: Genres, through: "videogame_genres" }],
+    });
    if (cantidad.length===0) return res.status(200).send('no se encuentra ningun videogame subido');
 //    
    const allPostDB= cantidad.map((el) => {// mapeo y  mando solo lo que quiero mostrar en la web de posteos
@@ -16,17 +18,18 @@ router.get("/", async (req, res) => {
       name: el.name,
       id: el.id,
       description: el.description,
-      genres: el.genres,
+      genres: el.Genres.map((genre) => genre.name),
       plataformas: el.plataformas,
-      fecha: el.released,
+      fecha: el.fecha,
       rating: el.rating,
-      image: el.background_image,
+      image: el.image,
     };})
     return res.status(200).json(allPostDB);
   } catch (error) {
     res.status(404).send("not found");
   }
 });
+
 router.post("/", async (req, res) => {
   postVG(req, res);
 });
