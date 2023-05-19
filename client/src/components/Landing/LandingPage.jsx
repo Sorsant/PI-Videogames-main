@@ -7,8 +7,8 @@ const Landing = () => {
 
                 <div className={style.Box}>
 
-                    <h1>Ingresa a Home Page</h1>
-                    <button>
+                    <h1 className={style.titleH1}>Ingresa a Pac Games</h1>
+                    <button className={style.botondeinicio}>
                         <Link to='/HomePage'>Start the games</Link>
                     </button>
 

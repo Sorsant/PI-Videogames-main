@@ -57,22 +57,21 @@ const HomePage = () => {
 
                             <optgroup label="Generos"></optgroup>
                             <option value="AllGeners">All Geners</option>
-                            <optgroup label="***********"></optgroup>
+
                             {allGenres?.map((genres) => {
                                 return <option value={genres}>{genres}</option>
                             })}
-                            <optgroup label="***********"></optgroup>
+
                         </select>
                     </div>
                     <div>
                         <h4 className={style.h3_select}>Orden Alfabeticamente</h4>
                         <select name="Alfabeticamente" onChange={handleOrderAz}>
                             <optgroup label="Orden Alfabetico"></optgroup>
-                            <optgroup label="***********"></optgroup>
                             <option value="Default">Default</option>
+
                             <option value="A-Z">A-Z</option>
                             <option value="Z-A">Z-A</option>
-                            <optgroup label="***********"></optgroup>
                         </select>
                     </div>
                     <div>
@@ -88,11 +87,11 @@ const HomePage = () => {
                         <h4 className={style.h3_select}>Filtro de tipo  Juego</h4>
                         <select name="Juegos" onChange={handleGames}>
                             <optgroup label="Tipo de Juegos"></optgroup>
-                            <optgroup label="***********"></optgroup>
+
                             <option value="default">  Default</option>
                             <option value="Api">   Api</option>
                             <option value="Db">    Db</option>
-                            <optgroup label="***********"></optgroup>
+
                         </select>
                     </div>
                 </div>

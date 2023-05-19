@@ -1,9 +1,18 @@
 import React from 'react'
+import style from './error.module.css'
 
 function Error() {
     return (
-        <div><h1>Error ...  </h1>
-            <img src="https://www.shutterstock.com/image-illustration/vintage-monochrome-broken-wireless-joystick-260nw-1641964507.jpg" alt="" /></div>
+        <div className={style.fondo}>
+            <div className={style.circ}>
+                <div className={style.load}> Error. . . </div>
+                <div className={style.hands}></div>
+                <div className={style.body}></div>
+                <div className={style.head}>
+                    <div className={style.eye}></div>
+                </div>
+            </div>
+        </div>
     )
 }
 

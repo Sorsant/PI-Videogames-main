@@ -10,15 +10,17 @@
     width: 100%;
     text-align: center;
     position: relative;
+    margin-bottom: 50px;
 }
 
 
 .IdH4 {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     margin: 10px;
     z-index: 1;
+    color: white;
 }
 
 .imgconteiner img {
@@ -26,6 +28,8 @@
     height: auto;
     border-radius: 10px;
     outline: 1px solid #ffffff9f;
+    box-shadow: 3px 14px 30px 1px #000;
+    filter: contrast(130%);
 }
 
 .title {
@@ -33,7 +37,7 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    margin: 10px;
+    margin: 5px;
     color: whitesmoke;
-    font-size: 60px;
+    font-size: 44px;
 }

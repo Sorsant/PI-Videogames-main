@@ -1,5 +1,6 @@
 .buttonsDiv {
-    background-color: #3133388c;
+    background: rgb(247, 171, 16);
+    background: linear-gradient(194deg, rgba(247, 171, 16, 1) 0%, rgba(217, 188, 19, 1) 35%, rgba(255, 132, 0, 0.5858718487394958) 100%);
     width: 420px;
     height: 40px;
     margin: auto;
