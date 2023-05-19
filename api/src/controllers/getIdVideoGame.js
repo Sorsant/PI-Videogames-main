@@ -23,9 +23,9 @@ const getIdVideoGame = async (req, res) => {
             const idResults ={
               name: Vg.name,
               id: Vg.id,
-              description: Vg.description,
-              genres: Vg.genres.map((genre) => genre.name),
-              platforms: Vg.platforms.map((platform) => platform.platform.name),
+              description: Vg.description_raw,
+              genres: Vg.genres.map((genre) => genre.name).join(', '),
+              platforms: Vg.platforms.map((platform) => platform.platform.name).join(", "),
               fecha: Vg.released,
               rating: Vg.rating,
               image: Vg.background_image,

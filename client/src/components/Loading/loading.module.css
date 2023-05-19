@@ -24,6 +24,7 @@
     transform: translate(-50%, -50%);
     animation: pac-top 0.5s linear infinite;
     transform-origin: center bottom;
+    box-shadow: -20px 47px 27px 0px #000;
 }
 
 .loader_wrapper .packman::after {

@@ -115,8 +115,8 @@ function FormPost() {
                         <span className={style.spans} style={{ flexBasis: '30%', marginBottom: '1px' }} key={genres}>
                             {genres}
                             <input type="checkbox" className={style.checkbox} name="genres" value={genres} onChange={HandleonChange} />
-
                         </span>
+
                     ))}
                 </div>
 

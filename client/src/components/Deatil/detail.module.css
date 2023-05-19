@@ -1,0 +1,39 @@
+.contenedorDetail {
+    background-color: rgba(128, 128, 128, 0.486);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.imgconteiner {
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+
+.IdH4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    z-index: 1;
+}
+
+.imgconteiner img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    outline: 1px solid #ffffff9f;
+}
+
+.title {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 10px;
+    color: whitesmoke;
+    font-size: 60px;
+}

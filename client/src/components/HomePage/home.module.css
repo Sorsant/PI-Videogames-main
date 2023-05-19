@@ -1,6 +1,35 @@
+select {
+    font-family: 'Bungee', cursive;
+    font-size: 9px;
+    color: white;
+    background-color: #666;
+    margin-bottom: 10px;
+    outline: 2px solid #0c050559;
+    outline-offset: 1px;
+}
+
+.h3_select {
+    margin-left: 20px;
+    color: black;
+}
+
 #canvas {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
+}
+
+.contenedor {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(247, 171, 16);
+    background: linear-gradient(194deg, rgba(247, 171, 16, 1) 0%, rgba(217, 188, 19, 1) 35%, rgba(255, 132, 0, 0.5858718487394958) 100%);
+    width: 70.0rem;
+    margin: auto;
+    border-radius: 10px;
+    outline: 2px solid #ffffff33;
+    outline-offset: 1px;
 }
