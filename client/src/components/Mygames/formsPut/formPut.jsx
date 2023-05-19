@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getGenres } from '../../../redux/actions';
 import validate from './validate';
 import { putVG } from '../../../redux/actions';
+import style from '/home/bansant/MisCursos/Curso_Henry/PI-Videogames-main/client/src/components/Mygames/formsPost/Frompost.module.css'
 
 function FormPut() {
     const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function FormPut() {
     const handleOnSubmit = (event) => {
         event.preventDefault()
         dispatch(putVG(put));
+        alert("El Juego a sido Editado!")
     }
 
     const renderStars = () => {
@@ -61,36 +63,37 @@ function FormPut() {
     return (
         <div>
             <form onSubmit={handleOnSubmit}>
-                <label htmlFor="">Id de Tu Juego</label><br />
-                <input type="number" name="id" placeholder="Id Para Editar" onChange={HandleonChange} /><br />
-                {errors.id && <span>{errors.id}</span>}
-                <label htmlFor="">Nombre Del Juego</label><br />
-                <input type="text" name="name" placeholder="Name" onChange={HandleonChange} /><br />
+                <p className={style.title}>Edita Tu Game </p>
+                <label htmlFor="">Id de Tu Juego</label>
+                <input className={style.inputss} type="number" name="id" placeholder="Id Para Editar" autocomplete="off" onChange={HandleonChange} />
+                {errors.id && <span className={style.spans}>{errors.id}</span>}
+                <label htmlFor="">Nombre Del Juego</label>
+                <input className={style.inputss} type="text" name="name" placeholder="Name" autocomplete="off" onChange={HandleonChange} />
 
 
-                <label htmlFor="">Plataforma Del Videojuego</label><br />
-                <input type="text" name="plataformas" placeholder="Plataformas" onChange={HandleonChange} /><br />
-                {errors.plataformas && <span>{errors.plataformas}</span>}
+                <label htmlFor="">Plataforma Del Videojuego</label>
+                <input className={style.inputss} type="text" name="plataformas" placeholder="Plataformas" autocomplete="off" onChange={HandleonChange} />
+                {errors.plataformas && <span className={style.spans}>{errors.plataformas}</span>}
 
-                <label htmlFor="">Descripcion del Juego</label><br />
-                <input type="text" name="description" placeholder="Descripcion" onChange={HandleonChange} /><br />
-                {errors.description && <span>{errors.description}</span>}
+                <label htmlFor="">Descripcion del Juego</label>
+                <input className={style.inputss} type="text" name="description" placeholder="Descripcion" autocomplete="off" onChange={HandleonChange} />
+                {errors.description && <span className={style.spans}>{errors.description}</span>}
 
-                <label htmlFor="">Imagen del Juego</label><br />
-                <input type="text" name="image" placeholder="Url" onChange={HandleonChange} /><br />
-                {errors.image && <span>{errors.image}</span>}
+                <label htmlFor="">Imagen del Juego</label>
+                <input className={style.inputss} type="text" name="image" placeholder="Url" autocomplete="off" onChange={HandleonChange} />
+                {errors.image && <span className={style.spans}>{errors.image}</span>}
 
-                <label htmlFor="">Fecha del Videojuego</label><br />
-                <input type="date" name="fecha" placeholder="Fecha" onChange={HandleonChange} /><br />
-                {errors.fecha && <span>{errors.fecha}</span>}
+                <label htmlFor="">Fecha del Videojuego</label>
+                <input className={style.inputss} type="date" name="fecha" placeholder="Fecha" autocomplete="off" onChange={HandleonChange} />
+                {errors.fecha && <span className={style.spans}>{errors.fecha}</span>}
 
-                <label htmlFor="">Rating del Videojuego</label><br />
+                <label htmlFor="">Rating del Videojuego</label>
                 <div>{renderStars()}</div>
-                <input type="range" name="rating" min="1" max="5" step="0.01" onChange={HandleonChange} /> <span id="ratingValue">Rating:{put.rating} </span><br />
-                {errors.rating && <span>{errors.rating}</span>}
+                <input className={style.inputss} type="range" name="rating" min="1" max="5" step="0.01" onChange={HandleonChange} /> <span className={style.spans} id="ratingValue">Rating:{put.rating} </span>
+                {errors.rating && <span className={style.spans}>{errors.rating}</span>}
 
 
-                <button disabled={!put.id || errors.id}>Enviar</button>
+                <button className={style.button_env} disabled={!put.id || errors.id}>Enviar</button>
             </form>
         </div>
     )

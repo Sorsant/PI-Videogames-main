@@ -31,10 +31,13 @@ export default function Cards() {
                     id={vg.id}
                     name={vg.name}
                     rating={vg.rating}
-                    genres={vg.genres}
+                    genres={vg.genres.join(', ')}
                     image={vg.image}
                 />)}
-            <Paginate pagina={pagina} setPagina={setPagina} maximo={maximo} />
+            <div className={style.Divpagina}>
+
+                <Paginate pagina={pagina} setPagina={setPagina} maximo={maximo} />
+            </div>
         </div>
     )
 }

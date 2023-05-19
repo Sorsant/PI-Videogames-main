@@ -1,30 +1,113 @@
-.cardcontainer {
+.cd_card {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
     display: flex;
-    flex-direction: colum;
-    background-color: black;
-    border: 1px solid gray;
-    border-radius: 5px;
-    padding: 25px;
-    cursor: pointer;
-    -moz-osx-font-smoothing: grayscale;
-    backface-visibility: hidden;
-    transform: translateZ(B);
-    transition: transform e.25s ease-out;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    box-shadow: 18px 29px 23px 1px #000;
+    margin-bottom: 2.0rem;
+    filter: saturate(118%);
+    outline: 1px solid #ffffff4f;
+    transition: transform 0.3s ease;
 }
 
-h2 {
+.cd_card:hover {
+    transform: scale(1.1);
+}
+
+
+.cd {
+    width: 50px;
+    height: 50px;
+    background-color: #d6d6d6b4;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.cd::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: contain;
+    background-position: center;
+}
+
+.cd_hole {
+    width: 40px;
+    height: 40px;
+    background-color: #030303;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    ;
+}
+
+
+.cd_label {
+    width: 150px;
+    height: 150px;
+    background-color: #20050500;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cd_content {
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 370px;
+    height: 150px;
+    background-color: rgba(5, 3, 3, 0.294);
+
+}
+
+.cd_content h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.cd_content p {
+    font-size: 16px;
+}
+
+.h2style {
+    color: white;
+
+}
+
+h3 {
     color: white;
 }
 
 h4 {
     color: white;
+
 }
 
-.cardcontainer:hover {
-    transform: sca1e(1.e5);
+a {
+    text-decoration: none;
 }
 
-.cardcontainer img {
-    width: 200px;
-    height: 150px;
+span {
+    color: whitesmoke;
 }

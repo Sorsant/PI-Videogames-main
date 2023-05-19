@@ -5,6 +5,7 @@ const { Videogame ,Genres} = require("../../db");
 const postVG = require("../../controllers/postvideogame");
 const deleteVg = require("../../controllers/deleteVg");
 const putvg = require("../../controllers/putVg");
+const getdb= require("../../controllers/getDb");
 
 router.get("/", async (req, res) => {
   try {
@@ -25,6 +26,7 @@ router.get("/", async (req, res) => {
       image: el.image,
     };})
     return res.status(200).json(allPostDB);
+
   } catch (error) {
     res.status(404).send("not found");
   }

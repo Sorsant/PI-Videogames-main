@@ -26,6 +26,7 @@ const getVideoGames = async () => {
         fecha: el.released,
         rating: el.rating,
         image: el.background_image,
+        createInDb:"Api"
       };
     });
     

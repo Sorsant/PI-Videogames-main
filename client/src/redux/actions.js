@@ -170,20 +170,36 @@ export const getAllVG = () => { // get all vg
     }
 }
 
-export const getAllPosts= () => { // get all posts
-const endpoint= 'http://localhost:3001/posteados'
-try {
-    return async(dispatch)=>{
-        const {data} = await axios.get(endpoint);
-        
-        return dispatch ({
-            type:GET_ALL_POSTS,
-            payload:data
-        })
-    }
-} catch (error) {
-    console.log(error)
-}
+export const getAllPosts= (event) => { // get all posts
+    try {
+    const endpoint= 'http://localhost:3001/videogames'
+    
+    return async (dispatch) => {
+       const { data } = await axios.get(endpoint);
+       if (event === "default") {
+          return dispatch({
+             type: GET_ALL_POSTS,
+             payload: data,
+          });
+       }
+       if (event === "Api") {
+          const gamesAPI = data?.filter((game) => game.createInDb === "Api");
+          return dispatch({
+             type: GET_ALL_POSTS,
+             payload: gamesAPI,
+          });
+       }
+       if (event === "Db") {
+          const gamesDB = data?.filter((game) => game.createInDb !== "Api");
+          return dispatch({
+             type: GET_ALL_POSTS,
+             payload: gamesDB,
+          });
+       }
+    };
+ } catch (error) {
+    throw new Error(error);
+ }
 }
 
 

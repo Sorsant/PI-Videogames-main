@@ -51,7 +51,7 @@ const Paginate = ({ pagina, setPagina, maximo }) => {
                 autoComplete="off"
                 value={input}
             />
-            <p> de 13 </p>
+
             <button className={styles.BotonPaginate}
                 disabled={pagina === Math.ceil(maximo) || pagina > Math.ceil(maximo)}
                 onClick={nextPage}

@@ -35,7 +35,6 @@ switch(type){
     case ADD_VIDEOGAME:
         return{...state,
                     allvideogames:[...payload],
-                    posts:[...payload],
                 };
     case UPDATE_VIDEOGAME:
         return{
@@ -60,8 +59,8 @@ switch(type){
             allvideogames:payload,
         };
     case GET_ALL_POSTS:
-        return{
-        posts:payload,
+        return{...state,
+            allvideogames:payload,
             };
     case FILTER_GENERS_DB:
         return{...state,

@@ -18,8 +18,8 @@ export default function SearchBar() {
 
         <div className={style.searchBox}>
 
-            <input placeholder="name VideoGame 🔍" type='search' value={search} onChange={handleChange} />
-            <button type='Submit' onClick={() => { handleSubmit(); setSearch("") }}>Buscar</button>
+            <input placeholder="Name VideoGame 🔍" type='search' value={search} onChange={handleChange} />
+            <button className={style.button} type='Submit' onClick={() => { handleSubmit(); setSearch("") }}>Buscar</button>
 
         </div >
     );
