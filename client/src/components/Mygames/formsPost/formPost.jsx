@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getGenres } from '../../../redux/actions';
 import validate from './validate';
 import { addVG } from '../../../redux/actions';
-import style from './frompost.module.css'
+import style from './formp.module.css'
 
 function FormPost() {
     const dispatch = useDispatch();

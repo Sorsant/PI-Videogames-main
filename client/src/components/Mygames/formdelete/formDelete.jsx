@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useDispatch } from "react-redux"
-import style from '/home/bansant/MisCursos/Curso_Henry/PI-Videogames-main/client/src/components/Mygames/formsPost/Frompost.module.css'
+import style from '../formsPost/formp.module.css'
 import { removeVG } from '../../../redux/actions';
 const FormDelete = () => {
     const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getGenres } from '../../../redux/actions';
 import validate from './validate';
 import { putVG } from '../../../redux/actions';
-import style from '/home/bansant/MisCursos/Curso_Henry/PI-Videogames-main/client/src/components/Mygames/formsPost/Frompost.module.css'
+import style from '../formsPost/formp.module.css'
 
 function FormPut() {
     const dispatch = useDispatch();
