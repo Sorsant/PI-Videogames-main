@@ -14,16 +14,16 @@ router.get("/", async (req, res) => {
     });
    if (cantidad.length===0) return res.status(200).send('no se encuentra ningun videogame subido');
 //    
-   const allPostDB= cantidad.map((el) => {// mapeo y  mando solo lo que quiero mostrar en la web de posteos
+   const allPostDB= cantidad.map((element) => {// mapeo y  mando solo lo que quiero mostrar en la web de posteos
     return {
-      name: el.name,
-      id: el.id,
-      description: el.description,
-      genres: el.Genres.map((genre) => genre.name),
-      plataformas: el.plataformas,
-      fecha: el.fecha,
-      rating: el.rating,
-      image: el.image,
+      name: element.name,
+      id: element.id,
+      description: element.description,
+      genres: element.Genres.map((genre) => genre.name),
+      plataformas: element.plataformas,
+      fecha: element.fecha,
+      rating: element.rating,
+      image: element.image,
     };})
     return res.status(200).json(allPostDB);
 

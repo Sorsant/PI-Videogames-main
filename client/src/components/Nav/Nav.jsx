@@ -15,8 +15,8 @@ const Nav = () => {
             </div>
 
             {location.pathname !== "*" && location.pathname !== "/Mygames" ? <SearchBar /> : null}
-            <NavLink to='/'><button >Log Out</button></NavLink>
-
+            <NavLink to='/'><button >Landing</button></NavLink>
+            <NavLink to='/asdasda'><button >Error</button></NavLink>
         </nav>
 
 
