@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import style from '/home/bansant/MisCursos/Curso_Henry/PI-Videogames-main/client/src/components/Mygames/mygames.module.css'
+import style from './mygames.module.css'
 
 
 import FormPost from './formsPost/formPost';
