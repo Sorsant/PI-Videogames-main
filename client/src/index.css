@@ -35,3 +35,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body::-webkit-scrollbar {
+  width: 7px;
+  background: #1e1e1e;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 8px;
+}
