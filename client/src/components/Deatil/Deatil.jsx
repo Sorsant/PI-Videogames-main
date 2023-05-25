@@ -42,13 +42,17 @@ const Detail = () => {
 
                 </div>
                 <span>Descripción: </span>
-                {videogameid?.description}
+                <span>{videogameid?.description}</span>
+
                 <span>Plataformas: </span>
-                {videogameid?.platforms}
+                <span>{videogameid?.platforms} </span>
+
                 <span>Fecha: </span>
-                {videogameid?.fecha}
+
+                <span> {videogameid?.fecha}</span>
                 <span>Rating:</span>
-                {videogameid?.rating}
+                <span>  {videogameid?.rating} </span>
+
                 <div>{renderStars()}</div>
             </div>
         </div>

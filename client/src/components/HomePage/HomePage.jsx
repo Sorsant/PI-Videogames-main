@@ -59,7 +59,7 @@ const HomePage = () => {
                             <option value="AllGeners">All Geners</option>
 
                             {allGenres?.map((genres) => {
-                                return <option value={genres}>{genres}</option>
+                                return <option value={genres} key={genres}>{genres}</option>
                             })}
 
                         </select>

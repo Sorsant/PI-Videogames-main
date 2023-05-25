@@ -1,3 +1,4 @@
+// const regexImg= /(http(s?):)([/|.|\w|\s|-])*.(?:jpg|gif|png|pnj)/;
 const validate = (post) => {
     let errors={}
    if(post.name.length ===''){
@@ -51,7 +52,8 @@ if(post.image.length ===''){
     errors.image= 'Se requiere que este lleno el campo'
    }
   
-
+   if (!/^https?:\/\//.test(post.image)) {
+    errors.imagen = "You must add the URL of an image.";}
 
     return errors
 }
