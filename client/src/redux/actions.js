@@ -28,7 +28,7 @@ export const addVG = (videogame)=>{ // post
         })
         
         } catch (error) {
-            console.error(error)
+            alert(message)
         }
     }
 }

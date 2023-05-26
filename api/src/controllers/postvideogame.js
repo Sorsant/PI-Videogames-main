@@ -17,7 +17,7 @@ const postVG = async (req, res) => {
   }
   const count = await Videogame.count();
   const nextId = count + 960529;
-  const existeVg = (await Videogame.findAll()).filter(existe => existe.name === name);
+  const existeVg = (await Videogame.findAll()).filter(existe => existe.id === id);
   if(existeVg.length === 1){ return  res.status(201).json({ message: `Videogame Existente`}); }
   
   try {
